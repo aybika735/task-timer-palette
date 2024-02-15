@@ -1,5 +1,6 @@
 .app{
-  margin: auto;
+  margin: 100px auto;
+ 
   width: 450px;
 }
 .form{
@@ -11,6 +12,7 @@
   margin-bottom: 15px;
   border-radius: 3px;
   padding-left: 15px;
+  padding: 15px 30px;
 }
 .form button{
   background-color: #634BF5;
@@ -22,57 +24,72 @@
   border-radius: 3px;
 
 }
-.header{
-  font-size: 22px;
+.drop {
+  margin-top: 150px;
+  font-size: 30px;
+  width: 450px;
   text-align: center;
-  padding: 15px 0;
-  border-bottom: 1px;
+  
 }
-
-
-.todo{
-  display:flex;
+.form button:disabled {
+  border: none;
+  padding: 10px;
+  color: white;
+  background-color: grey;
+  width: 100%;
+  cursor: not-allowed;
+  width: 170px;
+}
+.drop_counter{
+  border-radius: 50%;
+  width: 150px;
+  height: 150px;
+  background-color: #7b6ae9;
+  text-align: center;
+  line-height: 150px;
+  margin: auto;
+}
+.header{
+  margin-bottom: 100px;
+  display: flex;
   justify-content: space-between;
-  padding: 15px 0;
-  border-bottom: 1px solid #E5E5E5;
-  align-items: center;
+  font-size: 30px;
+  color: #634BF5;
+
+
+
 }
-.todo-text{
-  flex: 1;
+.link_palette, .link_timer{
+    text-decoration: none;
 }
-.favorite{
-  padding: 0 15px;
+.color_container{
+display: flex;
+flex-wrap: wrap;
+ justify-content: space-between;
+
 }
-.favorite button{
-  font-size: 22px;
-  padding: 7px;
-  background-color: transparent;
-  border:none;
+.color_item{
+margin-top: 5px;
+  height: 80px;
+  width: 110px;
+  display: flex;
+flex-direction: column;
+ align-items: end;
+ 
+ 
+}
+.delete_icon{
   cursor: pointer;
-  outline: none;
-  font-size: 18px;
+  
 }
-.actions{
-  padding-right:15px;
-}
-.actions span{
-  color:red;
-
-}
-.selected{
-  background-color: #f6f4c2;
-}
-.selected .favorite button{
-  color: #FFD231;
-}
-.actions button{
-  color: red;
-  padding: 7px;
-  background-color: transparent;
+.button{
+  background-color: #634BF5;
+  color: white;
+  padding: 15px 30px;
   border:none;
-  cursor: pointer;
-  outline: none;
-  font-size: 18px;
+  margin-left: 15px solid #E5E5E5;
+  margin-bottom: 15px;
+  border-radius: 3px;
+  width: 180px;
+ 
 }
-
-

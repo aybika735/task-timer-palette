@@ -1,41 +1,57 @@
 import { createAction, createReducer } from "@reduxjs/toolkit";
 
-const initialState = [
-  {
-    text: "Купить бананы",
-    favorite: false,
-  },
-  {
-    text: "Продать квартиру",
-    favorite: true,
-  },
-  {
-    text: "Выучить уроки по JS",
-    favorite: false,
-  },
-];
-export const add = createAction("add");
-export const deleted = createAction("deleted");
-export const favorite = createAction("favorite");
+const initialState = {
+  colors: [],
+  openedColorPicker: null,
+ 
+}
+
+export const addColor = createAction("addColor");
+export const removeColor = createAction("removeColor");
+export const editColor = createAction("editColor");
+export const openColorPicker = createAction("openColorPicker");
+export const closeColorPicker = createAction("closeColorPicker");
+export const mouseEnter = createAction("mouseEnter");
+export const mouseLeave = createAction("mouseEnter");
+
+
 
 const todosReducer = createReducer(initialState, (builder) => {
   builder
-    .addCase(add, (state, action) => {
-      state.push(action.payload);
+    .addCase(addColor, (state, action) => {
+      console.log(state.colors)
+      state.colors.push({ id: Date.now(), color: action.payload, pickerOpen: true});
     })
 
-    .addCase(deleted, (state, action) => {
-      const index = action.payload;
-      return state.filter((todo, i) => {
-        if (i === index) return false;
-        return true;
-      });
+    .addCase(removeColor, (state, action) => {
+   
+      state.colors = state.colors.filter((color) => color.id !== action.payload);
     })
-    .addCase(favorite, (state, action) => {
-      const todo = state[action.payload];
-      const index = action.payload;
-      state[index].favorite = !todo.favorite;
-    });
+ 
+    .addCase(editColor,(state, action) => {
+     
+      const { colorId, newColor } = action.payload;
+      const colorToUpdate = state.colors.find((color) => color.id === colorId);
+      if (colorToUpdate) {
+        colorToUpdate.color = newColor;
+     
+      }
+      
+    
+    })
+    .addCase(openColorPicker, (state, action) => {
+      const { colorId } = action.payload;
+      const colorToOpen = state.colors.find((color) => color.id === colorId);
+      if (colorToOpen) {
+        colorToOpen.pickerOpen = true;
+      }
+    })
+    .addCase(closeColorPicker, (state, action) => {
+      state.colors.forEach((color) => {
+        color.pickerOpen = false;
+      });
+  
+    })
 });
 
 export default todosReducer;
